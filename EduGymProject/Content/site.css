@@ -1,0 +1,40 @@
+﻿
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*li:hover {
+    background-color: gold;
+}*/
+
+.navbar-brand {
+    color: deepskyblue !important;
+    font-family: 'Berlin Sans FB';
+    font-size: 38px;
+}
+
+.navbar-toggle {
+    background-color: gold;
+}
+
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}
+
+#navbarText .navbar-nav .nav-item a:hover {
+    color: gold !important;
+}
+.nav-item {
+    font-family: 'Berlin Sans FB';
+    font-size: 20px !important;
+}
+.page-footer {
+    position: absolute;
+}

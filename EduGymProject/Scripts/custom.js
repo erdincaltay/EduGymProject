@@ -1,0 +1,4 @@
+﻿$(function () {
+    $("#tblDepartmanlar").DataTable();
+
+});

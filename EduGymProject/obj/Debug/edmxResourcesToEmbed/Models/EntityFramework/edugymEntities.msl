@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="edugymModelStoreContainer" CdmEntityContainer="edugymEntities1">
+    <EntitySetMapping Name="Departman">
+      <EntityTypeMapping TypeName="edugymModel.Departman">
+        <MappingFragment StoreEntitySet="Departman">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="DepartmanAd" ColumnName="DepartmanAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personal">
+      <EntityTypeMapping TypeName="edugymModel.Personal">
+        <MappingFragment StoreEntitySet="Personal">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="DepartmanId" ColumnName="DepartmanId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Maas" ColumnName="Maas" />
+          <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+          <ScalarProperty Name="EvliMi" ColumnName="EvliMi" />
+          <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="edugymModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="RolAd" ColumnName="RolAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="edugymModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

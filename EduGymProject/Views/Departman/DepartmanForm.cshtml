@@ -1,0 +1,28 @@
+﻿@model EduGymProject.Models.EntityFramework.Departman
+@{
+    ViewBag.Title = "DepartmanForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div id="mesaj">
+
+    </div>
+    @using (Ajax.BeginForm("Kaydet", "Departman", new AjaxOptions { HttpMethod = "POST" , UpdateTargetId="mesaj"}))
+
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <h2> @Html.LabelFor(m => m.DepartmanAd)</h2>
+            @Html.TextBoxFor(m => m.DepartmanAd, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DepartmanAd)
+        </div>
+        @Html.HiddenFor(m => m.id)
+        <Button type="submit" class="btn btn-success">Kaydet</Button>
+
+
+    }
+    @section scripts{
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }
+    </div>

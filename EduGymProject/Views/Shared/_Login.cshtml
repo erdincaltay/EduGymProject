@@ -1,0 +1,27 @@
+﻿@if (Session["UserName"] == null)
+{
+
+    <ul class="nav navbar-nav text-right dropright">
+            <li style="margin-left:500px;">@Html.ActionLink("Giriş Yap", "Login", "Users", new { area = "" }, new { @class = "btn btn-success" })</li>
+            <li style="margin-left:15px; color:white;">@Html.ActionLink("Kayıt Ol", "Register", "Users", new { area = "" }, new { @class = "btn btn-warning" })</li>
+    </ul>
+   
+
+}
+else
+{
+    <ul class="nav navbar-nav">
+        @if (User.IsInRole("A"))
+        {
+            <li class="nav-item">@Html.ActionLink("Departman", "Index", "Departman", new { area = "" }, new { @class = "nav-link" })</li>
+            <li class="nav-item">@Html.ActionLink("Personeller", "Index", "Personal", new { area = "" }, new { @class = "nav-link" })</li>
+            <li class="nav-item">@Html.ActionLink("Üyeler", "Index", "Membership", new { area = "" }, new { @class = "nav-link" })</li>
+            }
+
+
+        </ul>
+    <ul class="nav navbar-nav text-right dropright">
+        <li class="loginUser" style="margin-left:250px;">@Html.ActionLink("" + Session["UserName"] + "", "Users", new { area = "" }, new { @class = "btn btn-outline-primary" })</li>
+        <li class="loginUser" style="margin-left:15px;">@Html.ActionLink("Çıkış Yap", "Logout", "Users", new { area = "" }, new { @class = "btn btn-danger" })</li>
+    </ul>
+}

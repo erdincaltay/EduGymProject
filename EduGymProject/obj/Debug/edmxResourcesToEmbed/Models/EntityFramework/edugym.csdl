@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="edugymModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Departman">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmanAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Personal" Relationship="edugymModel.FK_Personal_Departman" FromRole="Departman" ToRole="Personal" />
+  </EntityType>
+  <EntityContainer Name="edugymEntities" annotation:LazyLoadingEnabled="false">
+    <EntitySet Name="Departman" EntityType="Self.Departman" />
+    <EntitySet Name="Personal" EntityType="edugymModel.Personal" />
+    <AssociationSet Name="FK_Personal_Departman" Association="edugymModel.FK_Personal_Departman">
+      <End Role="Departman" EntitySet="Departman" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <EntitySet Name="Roles" EntityType="edugymModel.Roles" />
+    <EntitySet Name="User" EntityType="edugymModel.User" />
+    <AssociationSet Name="FK_User_Roles" Association="edugymModel.FK_User_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmanId" Type="Int32" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Maas" Type="Int16" />
+    <Property Name="Cinsiyet" Type="Boolean" Nullable="false" />
+    <Property Name="EvliMi" Type="Boolean" Nullable="false" />
+    <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Departman" Relationship="edugymModel.FK_Personal_Departman" FromRole="Personal" ToRole="Departman" />
+  </EntityType>
+  <Association Name="FK_Personal_Departman">
+    <End Type="edugymModel.Departman" Role="Departman" Multiplicity="0..1" />
+    <End Type="edugymModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departman">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="DepartmanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RolId" />
+    </Key>
+    <Property Name="RolId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RolAd" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="edugymModel.FK_User_Roles" FromRole="Roles" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RolId" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Roles" Relationship="edugymModel.FK_User_Roles" FromRole="User" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK_User_Roles">
+    <End Type="edugymModel.Roles" Role="Roles" Multiplicity="1" />
+    <End Type="edugymModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RolId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

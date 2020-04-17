@@ -1,0 +1,38 @@
+﻿@model IEnumerable<EduGymProject.Models.EntityFramework.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2>Üye Listesi</h2>
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Kullanıcı Adı</th>
+                <th>Email</th>
+                <th>Oluşturma Tarihi</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var user in Model)
+            {
+            <tr class="@user.UserId">
+                <td>@user.UserId</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.CreatedOn</td>
+                <td><a class="btn btn-warning" href="/Membership/Sil/@user.UserId">Sil</a></td>
+               
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
